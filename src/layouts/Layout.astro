@@ -6,7 +6,7 @@ import {
   findAssetAttribute,
   getElement,
   findTextAttribute,
-  Text,
+  LiveText,
 } from "@stoati/astro";
 
 const data = await getElement("site_config");
@@ -23,7 +23,7 @@ const description = findTextAttribute(data[0].data, "description");
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image" href={favicon?.data.url} />
     <meta name="generator" content={Astro.generator} />
-    <title><Text code="site_config#title"/></title>
+    <title><LiveText code="site_config#title"/></title>
   </head>
   <body class="min-h-screen flex flex-col">
     <div class="pt-4 w-full">
