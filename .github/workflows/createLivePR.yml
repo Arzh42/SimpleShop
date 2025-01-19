@@ -2,10 +2,9 @@ name: Create live branch pull request
 
 on:
   push:
-    branches:
-      - master
+    branches: [master, main]
   workflow_dispatch:
-    branches: [live, master]
+    branches: [live, master, main]
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
