@@ -1,9 +1,5 @@
 ---
-import { findAssetAttribute, getElement, LiveImage, LiveText } from "@stoati/astro";
-
-const data = await getElement("homepage");
-
-const asset = findAssetAttribute(data[0].data, "logo");
+import { LiveText } from "@stoati/astro";
 ---
 
 <div class="flex gap-4 font-semibold py-2 border-b-2 w-full justify-center">
