@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import ContactForm from "./ContactForm.tsx";
+import { Text } from "@stoati/astro";
 ---
 
 <script>
@@ -8,7 +9,9 @@ import ContactForm from "./ContactForm.tsx";
 </script>
 <Layout>
   <div class="flex flex-col justify-center items-center w-screen flex-1 px-2">
-    <h1 class="text-xl font-semibold pb-4">Me contacter</h1>
+    <h1 class="text-xl font-semibold pb-4">Nous contacter</h1>
+    <span><Text code="contact#phone" /></span>
+    <span><Text code="contact#mail" /></span>
     <ContactForm client:visible />
   </div>
 </Layout>
