@@ -1,23 +1,22 @@
-name: Create live branch pull request
+name: Update Live
 
 on:
   push:
-    branches: [master, main]
-  workflow_dispatch:
-    branches: [live, master, main]
+    branches:
+      - main
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+permissions:
+  contents: write
 
 jobs:
-  createLivePR:
-    name: Create live branch pull request
+  update-version:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
+
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - name: Checkout main branch
+        uses: actions/checkout@v2
+        with:
+          ref: main
 
       - name: Replace Text by LiveText
         run: find . -type f -name '*.astro' -exec sed -i 's/\([[:space:]]\|<\|\/\)Text\([[:space:]]\|<\|\/\|,\)/\1LiveText\2/g' {} +
@@ -28,10 +27,13 @@ jobs:
       - name: Replace Image by LiveImage
         run: find . -type f -name '*.astro' -exec sed -i 's/\([[:space:]]\|<\|\/\)Image\([[:space:]]\|<\|\/\|,\)/\1LiveImage\2/g' {} +
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          delete-branch: true
-          branch: new-live-branch
-          title: "Update live branch"
-          base: live
+      - name: Push changes to version branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout -b live
+          git add -A
+          git commit -m "Bump live version"
+          git push origin live --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
