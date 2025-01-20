@@ -27,6 +27,12 @@ jobs:
       - name: Replace Image by LiveImage
         run: find . -type f -name '*.astro' -exec sed -i 's/\([[:space:]]\|<\|\/\)Image\([[:space:]]\|<\|\/\|,\)/\1LiveImage\2/g' {} +
 
+      - name: Replace Schedule by LiveSchedule
+        run: find . -type f -name '*.astro' -exec sed -i 's/\([[:space:]]\|<\|\/\)Schedule\([[:space:]]\|<\|\/\|,\)/\1LiveSchedule\2/g' {} +
+
+      - name: Replace Geolocation by LiveGeolocation
+        run: find . -type f -name '*.astro' -exec sed -i 's/\([[:space:]]\|<\|\/\)Geolocation\([[:space:]]\|<\|\/\|,\)/\1LiveGeolocation\2/g' {} +
+
       - name: Push changes to version branch
         run: |
           git config --local user.email "action@github.com"
