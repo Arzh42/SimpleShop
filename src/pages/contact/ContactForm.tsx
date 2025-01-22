@@ -1,7 +1,7 @@
 import { useForm, useWatch } from "react-hook-form";
 import Altcha from "./Altcha";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "astro/zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,

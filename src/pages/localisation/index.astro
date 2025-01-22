@@ -1,7 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Map from "@/pages/localisation/Map.astro";
-import { getElement } from "@stoati/astro";
+import { getElement, Geolocation } from "@stoati/astro";
 
 const element = await getElement("location#location");
 
@@ -10,14 +9,7 @@ const loc = element[0].data[0].data[0];
 
 <Layout>
   <main class="flex flex-col md:justify-center gap-8 items-center pt-8 px-4">
-    <h1 class="text-xl font-bold">{loc.address}</h1>
-    <Map
-      latitude={loc.lat}
-      longitude={loc.lon}
-      zoom={16}
-      containerId="map"
-      containerClass="w-[500px] h-[400px]"
-    />
+    <Geolocation code="location#location" />
     <a
       href={`https://www.google.com/maps/place/${loc.lat}+${loc.lon}`}
       target="_blank">Google Maps</a
