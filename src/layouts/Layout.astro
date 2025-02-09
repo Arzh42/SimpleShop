@@ -6,24 +6,25 @@ import {
   findAssetAttribute,
   getElement,
   findTextAttribute,
-  Text,
+  findMarkdownAttribute,
 } from "@stoati/astro";
 
-const data = await getElement("site_config");
+const data = await getElement("homepage");
 
-const favicon = findAssetAttribute(data[0].data, "favicon");
-const description = findTextAttribute(data[0].data, "description");
+const favicon = findAssetAttribute(data[0].data, "mainAsset");
+const description = findMarkdownAttribute(data[0].data, "presentation");
+const name = findTextAttribute(data[0].data, "name");
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description?.data.text} />
+    <meta name="description" content={description?.data.markdown} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image" href={favicon?.data.url} />
     <meta name="generator" content={Astro.generator} />
-    <title><Text code="site_config#title"/></title>
+    <title>{name}</title>
   </head>
   <body class="min-h-screen flex flex-col">
     <div class="pt-4 w-full">
