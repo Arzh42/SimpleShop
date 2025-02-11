@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getElement, Geolocation } from "@stoati/astro";
+import { getElement, Geolocation, findGeolocationData } from "@stoati/astro";
 
-const element = await getElement("location#location");
+const element = await getElement("location");
 
-const loc = element[0].data[0].data[0];
+const loc = findGeolocationData(element[0], "location") ?? { lat: 0, lon: 0 };
 ---
 
 <Layout>

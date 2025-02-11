@@ -11,9 +11,9 @@ import {
 
 const data = await getElement("homepage");
 
-const favicon = findAssetAttribute(data[0].data, "mainAsset");
-const description = findMarkdownAttribute(data[0].data, "presentation");
-const name = findTextAttribute(data[0].data, "name");
+const favicon = findAssetAttribute(data[0], "mainAsset");
+const description = findMarkdownAttribute(data[0], "presentation");
+const name = findTextAttribute(data[0], "name");
 ---
 
 <!doctype html>
