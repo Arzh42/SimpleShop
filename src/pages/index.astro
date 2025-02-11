@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Text, Markdown, LiveImage } from "@stoati/astro";
+import { LiveText, LiveMarkdown, LiveImage } from "@stoati/astro";
 ---
 
 <Layout>
   <main class="flex flex-col md:justify-center items-center pt-8 px-4">
-    <h2 class="text-5xl font-bold"><Text code="homepage#name" /></h2>
+    <h2 class="text-5xl font-bold"><LiveText code="homepage#name" /></h2>
     <p class="p-4 flex items-center justify-center text-center">
-      <Markdown code="homepage#presentation" />
+      <LiveMarkdown code="homepage#presentation" />
     </p>
     <LiveImage width={400} height={400} code="homepage#mainAsset" alt="" />
   </main>

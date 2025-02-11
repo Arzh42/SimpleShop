@@ -1,6 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { getElement, Geolocation, findGeolocationData } from "@stoati/astro";
+import { getElement, LiveGeolocation, findGeolocationData } from "@stoati/astro";
 
 const element = await getElement("location");
 
@@ -9,7 +9,7 @@ const loc = findGeolocationData(element[0], "location") ?? { lat: 0, lon: 0 };
 
 <Layout>
   <main class="flex flex-col md:justify-center gap-8 items-center pt-8 px-4">
-    <Geolocation code="location#location" />
+    <LiveGeolocation code="location#location" />
     <a
       href={`https://www.google.com/maps/place/${loc.lat}+${loc.lon}`}
       target="_blank">Google Maps</a
